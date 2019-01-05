@@ -38,13 +38,15 @@ public class Menu {
 			FileChooser();
 
 		}
-		filecount++;
 
 		if (filecount == 1) {
+
 			System.out.println("Please Select Comparable file");
 
 			FileChooser();
 		}
+
+		System.out.println("FINSIHED");
 
 	}
 
@@ -64,9 +66,7 @@ public class Menu {
 
 	/* Parses the file sent from file chooser into shingles */
 	private static void parser(File selectedFile) throws IOException, InterruptedException {
-
-		// blocking queue
-
+		
 		ArrayList<String> MainShingle = new ArrayList<>();
 		ArrayList<String> CompareShingle = new ArrayList<>();
 		// add to blocking queue instead of array.
@@ -81,13 +81,14 @@ public class Menu {
 															// at a time for
 															// shingle
 				if (scan.hasNext()) {
-					String file = scan.next();
-					sb.append(String.format("%s%s", file, i == 2 ? "" : " "));
+					String word = scan.next();
+					sb.append(String.format("%s%s", word, i == 2 ? "" : " "));
 					// the %s%S sets the first 2 words of the shingle so that
 					// there are spaces between them all
 				} else
 					break; // breaks out of the for
 			}
+
 			if (filecount == 0)
 				MainShingle.add(sb.toString());
 			else if (filecount == 1) {
@@ -105,7 +106,7 @@ public class Menu {
 
 			System.out.println(mainQueue);
 			// prints out shingles
-
+			filecount++;
 			UI();
 
 		} else if (filecount == 1) {
@@ -117,6 +118,7 @@ public class Menu {
 			// prints out shingles
 
 			UI();
+			filecount++;
 		}
 
 	}
